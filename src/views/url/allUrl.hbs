@@ -1,0 +1,32 @@
+<div class="row">
+    {{#each url as |u|}}
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title d-flex-justify-content-between align-items-center">{{u.title}} <a href="/url/edit/{{_id}}"> <i class="fas fa-pencil-alt"></i> </a></h4>
+                <p>Title: {{u.title}}</p>
+                <hr>
+                <p>Url: {{u.url}}</p>
+                <hr>
+                <p>Description: {{u.description}}</p>
+                {{!-- <p>{{date}}</p> --}}
+
+                <form action="/url/delete/{{_id}}?_method=DELETE" method="POST">
+                <input type="hidden" name="_method" value="DELETE">
+                <button class="btn btn-outline-danger btn-block btn-sm" type="submit">
+                    Delete
+                </button>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+    {{else}}
+    <div class="card mx-auto">
+        <div class="card-body">
+            <p class="lead"></p>
+            <a href="/url/add" class="btn btn-outline-success btn-block">Click here to add your favorite Url!</a>
+        </div>
+    </div>
+    {{/each}}
+</div>
